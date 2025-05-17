@@ -99,13 +99,13 @@ func run(datasets [][]int, sorterFunc func(data *[]int) (int, int)) {
 
 func main() {
 	gen := generator.NewDataGenerator(100000)
-	dataset1 := gen.GenIntSlice(27)
-	dataset2 := gen.GenIntSlice(42)
-	dataset3 := gen.GenIntSlice(63)
-	dataset4 := gen.GenIntSlice(96)
-	dataset5 := gen.GenIntSlice(144)
-	dataset6 := gen.GenIntSlice(216)
-	dataset7 := gen.GenIntSlice(324)
+	dataset1 := gen.GenIntSlice(34)
+	dataset2 := gen.GenIntSlice(77)
+	dataset3 := gen.GenIntSlice(173)
+	dataset4 := gen.GenIntSlice(389)
+	dataset5 := gen.GenIntSlice(877)
+	dataset6 := gen.GenIntSlice(1979)
+	dataset7 := gen.GenIntSlice(4475)
 
 	datasets := [][]int{dataset1, dataset2, dataset3, dataset4, dataset5, dataset6, dataset7}
 
