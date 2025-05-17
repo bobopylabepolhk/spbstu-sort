@@ -18,7 +18,7 @@ func main() {
 	f := flags{}
 	flag.IntVar(&f.size, "size", 1, "size of initial unsorted slice")
 	flag.IntVar(&f.ceil, "ceil", 1, "maximum value of generated int")
-	flag.StringVar(&f.alg, "alg", "insertion", "algorhitm to use")
+	flag.StringVar(&f.alg, "alg", "bubble", "algorhitm to use")
 	flag.Parse()
 
 	if f.size < 1 {

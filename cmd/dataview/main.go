@@ -35,10 +35,10 @@ func run(datasets [][]int, sorterFunc func(data *[]int) (int, int)) {
 		res[i] = result{
 			datasetNum:    i + 1,
 			compareCount:  compareCount,
-			compareLog:    math.Log(compareCountF64),
+			compareLog:    math.Log10(compareCountF64),
 			compareNorm:   compareCountF64 / datasetLengthF64,
 			shiftCount:    shiftCount,
-			shiftLog:      math.Log(shiftCountF64),
+			shiftLog:      math.Log10(shiftCountF64),
 			shiftNorm:     shiftCountF64 / datasetLengthF64,
 			datasetLength: datasetLength,
 		}
