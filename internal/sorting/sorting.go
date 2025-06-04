@@ -41,9 +41,6 @@ func InsertionSort(data *[]int) (compareCount int, shiftCount int) {
 		}
 
 		(*data)[j+1] = current
-		if j+1 != i {
-			shiftCount++
-		}
 	}
 
 	return

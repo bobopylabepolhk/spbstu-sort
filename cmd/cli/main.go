@@ -9,7 +9,6 @@ import (
 )
 
 type flags struct {
-	alg  string
 	size int
 	ceil int
 }
@@ -17,8 +16,7 @@ type flags struct {
 func main() {
 	f := flags{}
 	flag.IntVar(&f.size, "size", 1, "size of initial unsorted slice")
-	flag.IntVar(&f.ceil, "ceil", 1, "maximum value of generated int")
-	flag.StringVar(&f.alg, "alg", "bubble", "algorhitm to use")
+	flag.IntVar(&f.ceil, "ceil", 10000, "maximum value of generated int")
 	flag.Parse()
 
 	if f.size < 1 {
@@ -26,28 +24,31 @@ func main() {
 		panic(msg)
 	}
 
-	if f.alg != "bubble" && f.alg != "selection" && f.alg != "insertion" {
-		msg := fmt.Sprintf("invalid algorhitm %v available values: bubble, selection, insertion. bubble is default", f.size)
-		panic(msg)
-	}
+	// if f.alg != "bubble" && f.alg != "selection" && f.alg != "insertion" {
+	// 	msg := fmt.Sprintf("invalid algorhitm %v available values: bubble, selection, insertion. bubble is default", f.size)
+	// 	panic(msg)
+	// }
 
 	gen := generator.NewDataGenerator(f.ceil)
-	dataset := gen.GenIntSlice(f.size)
+	dataset1 := gen.GenIntSlice(f.size)
+	dataset2 := make([]int, 0)
+	dataset2 = append(dataset2, dataset1...)
+	var compareCount int
+	var shiftCount int
 
-	fmt.Println("original slice:")
-	fmt.Println(dataset)
+	fmt.Println("список:")
+	fmt.Println(dataset1, "\n")
 
-	switch f.alg {
-	case "bubble":
-		sorting.BubbleSort(&dataset)
-	case "selection":
-		sorting.SelectionSort(&dataset)
-	case "insertion":
-		sorting.InsertionSort(&dataset)
-	default:
-		sorting.BubbleSort(&dataset)
-	}
+	compareCount, shiftCount = sorting.BubbleSort(&dataset1)
 
-	fmt.Println("sorted slice:")
-	fmt.Println(dataset)
+	fmt.Println("пузырьковая сортировка:")
+	fmt.Println("сравнения:", compareCount, "перестановки:", shiftCount, "\n")
+
+	compareCount, shiftCount = sorting.InsertionSort(&dataset2)
+
+	fmt.Println("сортировка вставкой:")
+	fmt.Println("сравнения:", compareCount, "перестановки:", shiftCount, "\n")
+
+	fmt.Println("отсортированный список:")
+	fmt.Println(dataset2)
 }
